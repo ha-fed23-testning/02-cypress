@@ -15,13 +15,17 @@ User stories:
 2.2 när man klickar på knappen "-" och antalet är 0 ska antalet inte ändras
 3.1 när man klickar på knappen "Surprise me" ska antalet ändras til ett slumpat tal mellan 0 och 100
 */
+import { useState } from 'react'
 
 const Counter = () => {
+	const [count, setCount] = useState(1)
 
+	const handleAdd = () => setCount(count + 1)
 	return (
 		<div className="counter">
-			Counter
-			<button className="add-button"> + </button>
+			Product counter!
+			<p className="value"> {count} </p>
+			<button className="add-button" onClick={handleAdd}> + </button>
 			<button className="subtract-button"> - </button>
 			<button className="random-button"> Surprise me </button>
 		</div>
