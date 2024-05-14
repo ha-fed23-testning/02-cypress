@@ -25,13 +25,16 @@ const Counter = () => {
 		if( count > 0 )
 			setCount(count - 1)
 	}
+	const handleRandom = () => {
+		setCount( Math.floor(Math.random() * 101) )
+	}
 	return (
 		<div className="counter">
 			Product counter!
 			<p className="value"> {count} </p>
 			<button className="add-button" onClick={handleAdd}> + </button>
 			<button className="subtract-button" onClick={handleSubtract}> - </button>
-			<button className="random-button"> Surprise me </button>
+			<button className="random-button" onClick={handleRandom}> Surprise me </button>
 		</div>
 	)
 }

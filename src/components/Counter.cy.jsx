@@ -78,10 +78,15 @@ describe('<Counter />', () => {
 	})
 
 
-	// Till sista acceptanskriteriet
-	// cy.get('.random-button').invoke('text').then(text => {
-	// 	let n = Number(text)
-	// 	cy.log('N is ' + text)
-	// 	expect(n).to.not.be.NaN
-	// })
+	// 3.1 när man klickar på knappen "Surprise me" ska antalet ändras til ett slumpat tal mellan 0 och 100
+	it('should randomly select a number between 0 and 100 after click on "surprise me"', () => {
+		cy.get('.random-button').click()
+		// cy.get('.subtract-button').click()  <- bara för att testa .within
+		cy.get('.value').invoke('text').then(text => {
+			let x = Number( text.trim() )
+			expect(x).to.not.be.NaN
+			expect(x).to.be.within(0, 100)
+			
+		})
+	})
 })
