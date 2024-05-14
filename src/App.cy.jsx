@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/// <reference types="cypress" />
+
 // import React from 'react'
 import App from './App'
 
