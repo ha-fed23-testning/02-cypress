@@ -15,3 +15,17 @@ User stories:
 2.2 när man klickar på knappen "-" och antalet är 0 ska antalet inte ändras
 3.1 när man klickar på knappen "Surprise me" ska antalet ändras til ett slumpat tal mellan 0 och 100
 */
+
+const Counter = () => {
+
+	return (
+		<div className="counter">
+			Counter
+			<button className="add-button"> + </button>
+			<button className="subtract-button"> - </button>
+			<button className="random-button"> Surprise me </button>
+		</div>
+	)
+}
+
+export default Counter
