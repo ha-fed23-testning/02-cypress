@@ -32,11 +32,49 @@ describe('<Counter />', () => {
 		cy.get('.value').contains(1).should('be.visible')
 	})
 
-	// 1.1 när man klickar på knappen första gången "+" ska talet 2 visas i stället
-	it('should display 2 after click on "+"', () => {
-		const button = cy.get('.add-button')
-		button.click()
-		cy.get('.value').contains(2).should('be.visible')
+	describe('1 "+" button', () => {
+		let button
+		beforeEach(() => {
+			button = cy.get('.add-button')
+		})
+		// 1.1 när man klickar på knappen första gången "+" ska talet 2 visas i stället
+		it('should display 2 after click on "+"', () => {
+			// const button = cy.get('.add-button')  <- se beforeEach
+			button.click()
+			cy.get('.value').contains(2).should('be.visible')
+		})
+		// 1.2 när man klickar på knappen "+" ska antalet ändras till(tidigare tal + 1)
+		it('should increase value by 1 after every click on "+"', () => {
+			// const button = cy.get('.add-button')  <- se beforeEach
+			button.click()
+			button.click()
+			button.click()
+			cy.get('.value').contains(4).should('be.visible')
+		})
+	})
+
+	describe('2 "-" button', () => {
+		let button
+		beforeEach(() => {
+			button = cy.get('.subtract-button')
+		})
+		// 2.1 när man klickar på knappen "-" ska antalet ändras till(tidigare tal - 1)
+		it('should decrease value by 1 after every click on "-"', () => {
+			// cy.get('.value').invoke('text').then(textContent => cy.log('Text content 1: ', textContent))
+			cy.get('.add-button').click()
+			cy.get('.subtract-button').click()
+			cy.get('.subtract-button').click()
+			cy.get('.value').contains(0).should('be.visible')
+		})
+		// 2.2 när man klickar på knappen "-" och antalet är 0 ska antalet inte ändras
+		it('should decrease value by 1 only down to 0', () => {
+			button.click()
+			button.click()
+			button.click()
+			button.click()
+			button.click()
+			cy.get('.value').contains(0).should('be.visible')
+		})
 	})
 
 

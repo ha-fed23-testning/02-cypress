@@ -21,12 +21,16 @@ const Counter = () => {
 	const [count, setCount] = useState(1)
 
 	const handleAdd = () => setCount(count + 1)
+	const handleSubtract = () => {
+		if( count > 0 )
+			setCount(count - 1)
+	}
 	return (
 		<div className="counter">
 			Product counter!
 			<p className="value"> {count} </p>
 			<button className="add-button" onClick={handleAdd}> + </button>
-			<button className="subtract-button"> - </button>
+			<button className="subtract-button" onClick={handleSubtract}> - </button>
 			<button className="random-button"> Surprise me </button>
 		</div>
 	)
